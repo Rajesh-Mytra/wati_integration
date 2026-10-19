@@ -5,10 +5,25 @@ import frappe
 from frappe import _
 
 
-def get_wati_setting(name):
-	"""Return a Wati Setting document by name (required)."""
+def get_default_wati_setting_name():
+	"""Return name of the Wati Setting with Default Wati Account checked, or None."""
+	return frappe.db.get_value(
+		"Wati Setting",
+		{"default_wati_account": 1, "enabled": 1},
+		"name",
+	)
+
+
+def get_wati_setting(name=None):
+	"""Return a Wati Setting document by name, or the default account if name is empty."""
+	name = (name or "").strip() or get_default_wati_setting_name()
 	if not name:
-		frappe.throw(_("Wati Setting is required"))
+		frappe.throw(
+			_(
+				"Wati Setting is required. Pass an account or mark one Wati Setting "
+				"as Default Wati Account."
+			)
+		)
 	return frappe.get_doc("Wati Setting", name)
 
 

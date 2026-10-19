@@ -151,8 +151,7 @@ def send_whatsapp_message(
 ):
 	from wati_integration.utils import get_wati_setting, validate_wati_setting_credentials
 
-	if not wati_setting:
-		frappe.throw(_("Wati Setting is required to send WhatsApp message"))
+	# Explicit account, else Wati Setting marked Default Wati Account.
 	settings = get_wati_setting(wati_setting)
 	validate_wati_setting_credentials(settings)
 

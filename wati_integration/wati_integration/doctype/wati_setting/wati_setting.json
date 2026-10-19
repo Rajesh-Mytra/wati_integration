@@ -9,6 +9,7 @@
  "field_order": [
   "account_name",
   "enabled",
+  "default_wati_account",
   "column_break_account",
   "url",
   "whatsapp_number",
@@ -33,6 +34,14 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Enabled"
+  },
+  {
+   "default": "0",
+   "description": "When checked, this account is used as the default Wati Setting when no account is specified. Only one account should be marked as default.",
+   "fieldname": "default_wati_account",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Default Wati Account"
   },
   {
    "fieldname": "column_break_account",
@@ -82,7 +91,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 0,
  "links": [],
- "modified": "2026-10-12 13:00:00.000000",
+ "modified": "2026-10-16 15:35:00.000000",
  "modified_by": "Administrator",
  "module": "Wati Integration",
  "name": "Wati Setting",
